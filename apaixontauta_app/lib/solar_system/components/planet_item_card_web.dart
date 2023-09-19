@@ -1,4 +1,4 @@
-import 'package:apaixontauta_app/core/app_fonts.dart';
+import 'package:apaixontauta_app/core/utils/app_fonts.dart';
 import 'package:apaixontauta_app/solar_system/models/solar_system_model.dart';
 import 'package:apaixontauta_app/solar_system/pages/detail_planet_page.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +19,9 @@ class _PlanetItemCardWebState extends State<PlanetItemCardWeb> {
   double _size = 100.0;
 
   void onEntered(bool isHovered) => setState(() {
-    this.isHovered = isHovered;
-    _size = isHovered ? 150.0 : 100.0;
-  });
+        this.isHovered = isHovered;
+        _size = isHovered ? 150.0 : 100.0;
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +39,7 @@ class _PlanetItemCardWebState extends State<PlanetItemCardWeb> {
           },
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => PlanetDetailPage(planet: widget.planet),
-                ),
-              );
+              Navigator.of(context).pushNamed('/detail', arguments: widget.planet);
             },
             child: Padding(
               padding: EdgeInsets.only(left: widget.index != 0 ? 32 : 0),
@@ -68,7 +63,8 @@ class _PlanetItemCardWebState extends State<PlanetItemCardWeb> {
           padding: EdgeInsets.only(left: widget.index != 0 ? 32 : 0),
           child: Text(
             widget.planet.name,
-            style: TextStyle(color: Colors.white, fontFamily: AppFonts.poppins500),
+            style:
+                TextStyle(color: Colors.white, fontFamily: AppFonts.poppins500),
           ),
         )
       ],

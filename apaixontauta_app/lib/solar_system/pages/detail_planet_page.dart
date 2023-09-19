@@ -15,6 +15,7 @@ class PlanetDetailPage extends StatefulWidget {
 }
 
 class _PlanetDetailPageState extends State<PlanetDetailPage> {
+  
   YoutubePlayerController? _youtubeController;
 
   @override

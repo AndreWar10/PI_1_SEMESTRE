@@ -1,4 +1,4 @@
-import 'package:apaixontauta_app/core/app_assets.dart';
+import 'package:apaixontauta_app/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 
 class MenuAnimatedAstronaut extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:apaixontauta_app/core/app_assets.dart';
+import 'package:apaixontauta_app/core/utils/app_assets.dart';
 import 'package:apaixontauta_app/solar_system/components/planet_item_card_web.dart';
 import 'package:apaixontauta_app/solar_system/components/solar_system_subtitle.dart';
 import 'package:apaixontauta_app/solar_system/components/solar_system_title.dart';
@@ -13,7 +13,6 @@ class SolarSystemPageWeb extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        //width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(AppAssets.backgroundMiddle),

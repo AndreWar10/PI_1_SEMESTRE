@@ -1,15 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:apaixontauta_app/core/environment.dart';
 import 'package:apaixontauta_app/core/exceptions.dart';
+import 'package:apaixontauta_app/core/utils/environment.dart';
 import 'package:http/http.dart' as http;
 
 class SolarSystemRepository {
   Future<List?> fetchPlanetsSolarSystem() async {
     try {
-      var response = await http.get(Uri.parse(Environment.solarSystemBaseurl),
-      );
+      var response = await http.get(Uri.parse(Environment.solarSystemBaseurl));
 
       if (response.statusCode == 200) {
         var decodedResponse = await jsonDecode(utf8.decode(response.bodyBytes));

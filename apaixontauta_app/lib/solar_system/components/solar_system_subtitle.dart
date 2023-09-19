@@ -1,4 +1,4 @@
-import 'package:apaixontauta_app/core/app_fonts.dart';
+import 'package:apaixontauta_app/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class SolarSystemSubtitle extends StatelessWidget {
@@ -16,14 +16,12 @@ class SolarSystemSubtitle extends StatelessWidget {
           Text(
             'Sistema Solar',
             style: TextStyle(
-              fontSize: 18,
-              color: const Color.fromARGB(255, 218, 218, 218),
-              fontFamily: AppFonts.poppins500
-            ),
+                fontSize: 18,
+                color: const Color.fromARGB(255, 218, 218, 218),
+                fontFamily: AppFonts.poppins500),
           ),
         ],
       ),
     );
   }
 }
-

@@ -1,4 +1,5 @@
-import 'package:apaixontauta_app/core/app_fonts.dart';
+
+import 'package:apaixontauta_app/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 

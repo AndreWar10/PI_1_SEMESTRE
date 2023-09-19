@@ -1,4 +1,4 @@
-import 'package:apaixontauta_app/core/app_assets.dart';
+import 'package:apaixontauta_app/core/utils/app_assets.dart';
 import 'package:apaixontauta_app/solar_system/components/planet_item_card.dart';
 import 'package:apaixontauta_app/solar_system/components/solar_system_subtitle.dart';
 import 'package:apaixontauta_app/solar_system/components/solar_system_title.dart';

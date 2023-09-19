@@ -1,5 +1,4 @@
-
-import 'package:apaixontauta_app/core/app_fonts.dart';
+import 'package:apaixontauta_app/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class SolarSystemTitle extends StatelessWidget {
@@ -17,10 +16,9 @@ class SolarSystemTitle extends StatelessWidget {
           Text(
             'Explorar',
             style: TextStyle(
-              fontSize: 40,
-              color: Colors.white,
-              fontFamily: AppFonts.poppins700
-            ),
+                fontSize: 40,
+                color: Colors.white,
+                fontFamily: AppFonts.poppins700),
           ),
         ],
       ),

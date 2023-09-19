@@ -1,9 +1,9 @@
-import 'package:apaixontauta_app/core/app_fonts.dart';
+import 'package:apaixontauta_app/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class MenuButton extends StatelessWidget {
   final String textButton;
-  final Widget pageTo;
+  final String pageTo;
   final String image;
 
   const MenuButton({
@@ -18,10 +18,8 @@ class MenuButton extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => pageTo,
-          ),
+        onTap: () => Navigator.of(context).pushNamed(
+         pageTo
         ),
         child: Container(
           decoration: BoxDecoration(
@@ -44,9 +42,7 @@ class MenuButton extends StatelessWidget {
                   child: Text(
                     textButton,
                     style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: AppFonts.poppins400
-                    ),
+                        fontSize: 15, fontFamily: AppFonts.poppins400),
                   ),
                 ),
               ],

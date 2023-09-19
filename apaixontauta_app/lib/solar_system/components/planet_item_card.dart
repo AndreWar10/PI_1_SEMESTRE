@@ -1,12 +1,9 @@
-import 'package:apaixontauta_app/core/app_fonts.dart';
+import 'package:apaixontauta_app/core/utils/app_fonts.dart';
 import 'package:apaixontauta_app/solar_system/models/solar_system_model.dart';
-import 'package:apaixontauta_app/solar_system/pages/detail_planet_page.dart';
 import 'package:flutter/material.dart';
 
 class PlanetItemCard extends StatelessWidget {
-  const PlanetItemCard(
-      {Key? key, required this.planet})
-      : super(key: key);
+  const PlanetItemCard({Key? key, required this.planet}) : super(key: key);
 
   final SolarSystemModel planet;
 
@@ -16,12 +13,7 @@ class PlanetItemCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
       child: GestureDetector(
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => PlanetDetailPage(planet: planet),
-          ),
-        ),
+        onTap: () => Navigator.of(context).pushNamed('/detail', arguments: planet),
         child: Stack(
           children: [
             Padding(
@@ -54,10 +46,9 @@ class PlanetItemCard extends StatelessWidget {
                               child: Text(
                                 planet.name,
                                 style: TextStyle(
-                                  fontSize: 22,
-                                  color: Colors.white,
-                                  fontFamily: AppFonts.poppins700
-                                ),
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontFamily: AppFonts.poppins700),
                               ),
                             ),
                             Text(
@@ -78,10 +69,9 @@ class PlanetItemCard extends StatelessWidget {
                             Text(
                               planet.resume,
                               style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
-                                fontFamily: AppFonts.poppins400
-                              ),
+                                  fontSize: 12,
+                                  color: Colors.white,
+                                  fontFamily: AppFonts.poppins400),
                               maxLines: 4,
                               overflow: TextOverflow.ellipsis,
                             )
@@ -97,11 +87,12 @@ class PlanetItemCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
-                              children: const[
-                                 Padding(
+                              children: const [
+                                Padding(
                                   padding: EdgeInsets.only(left: 5),
                                   child: Text(
                                     'Saiba mais',
@@ -111,7 +102,7 @@ class PlanetItemCard extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                 Padding(
+                                Padding(
                                   padding: EdgeInsets.only(top: 1),
                                   child: Icon(
                                     Icons.play_arrow,

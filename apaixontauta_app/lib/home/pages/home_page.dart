@@ -1,5 +1,6 @@
-import 'package:apaixontauta_app/core/app_assets.dart';
-import 'package:apaixontauta_app/core/app_fonts.dart';
+import 'package:apaixontauta_app/core/utils/app_assets.dart';
+import 'package:apaixontauta_app/core/utils/app_fonts.dart';
+import 'package:apaixontauta_app/core/utils/app_routes.dart';
 import 'package:apaixontauta_app/home/components/menu_animated_astronaut.dart';
 import 'package:apaixontauta_app/home/components/menu_item_button.dart';
 import 'package:apaixontauta_app/solar_system/pages/solar_system_container.dart';
@@ -55,25 +56,25 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 32),
                 MenuButton(
                   textButton: 'sistema solar',
-                  pageTo: const SolarSystemContainer(),
+                  pageTo: AppRoutes.systemSolar,
                   image: AppAssets.menuSolarSystem,
                 ),
                 const SizedBox(height: 16),
                 MenuButton(
                   textButton: 'notícias',
-                  pageTo: Container(),
+                  pageTo: '',
                   image: AppAssets.menuNews,
                 ),
                 const SizedBox(height: 16),
                 MenuButton(
                   textButton: 'lançamentos',
-                  pageTo: Container(),
+                  pageTo: '',
                   image: AppAssets.menuLaunchs,
                 ),
                 const SizedBox(height: 16),
                 MenuButton(
                   textButton: 'observatórios',
-                  pageTo: Container(),
+                  pageTo: '',
                   image: AppAssets.menuObservatories,
                 ),
               ],
