@@ -10,18 +10,5 @@
 <div>
 Repositório para um projeto de PI, da FATEC no curso de Desenvolvimento de Software Multiplataforma. Seu objetivo é centralizar diferentes vertentes da astronomia em uma única aplicação.
 </div>  
-  
-    
-<div align="center">  
-  <strong> 💼 Tecnologias utilizadas: </strong>
-</div>   
-
-<table align="center">
- <tr>
-  <td>Dart/Dart/Flutter</td>  
-  <td>Mongo</td>
-  <td>Node</td>
- </tr>
-</table>
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=b930b7&height=120&section=footer"/>
