@@ -15,4 +15,8 @@ app.use(cookieParser());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
+import noticiasRoute from './routes/noticias.js'
+app.use('/noticias', noticiasRoute)
+
+
 export default app;
