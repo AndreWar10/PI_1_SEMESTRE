@@ -31,13 +31,11 @@ class _SolarSystemContainerState extends State<SolarSystemContainer> {
                 return ResponsiveBuilder(
                   builder: (context, sizingInformation) {
                     // Check the sizing information here and return your UI
-                    if (sizingInformation.deviceScreenType ==
-                        DeviceScreenType.desktop) {
+                    if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
                       return SolarSystemPageWeb(listPlanets: listPlanets);
                     }
 
-                    if (sizingInformation.deviceScreenType ==
-                        DeviceScreenType.tablet) {
+                    if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
                       return SolarSystemPage(listPlanets: listPlanets);
                     }
 
@@ -54,10 +52,8 @@ class _SolarSystemContainerState extends State<SolarSystemContainer> {
                   funcUpdate: () => setState(() {}),
                 );
               }
-              if (snapshot.error is NoServiceFoundException)
-                () => const InfoNotFound(information: 'sistema solar');
-              if (snapshot.error is InvalidFormatException)
-                () => const InfoNotFound(information: 'sistema solar');
+              if (snapshot.error is NoServiceFoundException) () => const InfoNotFound(information: 'sistema solar');
+              if (snapshot.error is InvalidFormatException) () => const InfoNotFound(information: 'sistema solar');
               //default error
               return const InfoNotFound(information: 'sistema solar');
             }

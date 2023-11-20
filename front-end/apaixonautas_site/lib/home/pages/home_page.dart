@@ -1,3 +1,4 @@
+import 'package:apaixonautas_site/core/components/custom_web_menu.dart';
 import 'package:apaixonautas_site/core/utils/app_assets.dart';
 import 'package:apaixonautas_site/core/utils/app_fonts.dart';
 import 'package:apaixonautas_site/core/utils/app_routes.dart';
@@ -84,43 +85,3 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class MenuWebCustom extends PreferredSize {
-  const MenuWebCustom({super.key})
-      : super(
-            child: const SizedBox(), preferredSize: const Size.fromHeight(100));
-
-  @override
-  Size get preferredSize => const Size.fromHeight(100);
-
-  @override
-  Widget build(BuildContext context) {
-    return PreferredSize(
-      preferredSize: const Size(double.infinity, 100),
-      child: Container(
-        height: 100,
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushNamed('/login');
-                  },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontFamily: AppFonts.poppins700),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
