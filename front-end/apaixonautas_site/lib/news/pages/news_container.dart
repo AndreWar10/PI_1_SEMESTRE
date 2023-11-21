@@ -60,10 +60,8 @@ class _NewsContainerState extends State<NewsContainer> {
                       funcUpdate: () => setState(() {}),
                     );
                   }
-                  if (snapshot.error is NoServiceFoundException)
-                    () => const InfoNotFound(information: 'notícias');
-                  if (snapshot.error is InvalidFormatException)
-                    () => const InfoNotFound(information: 'notícias');
+                  if (snapshot.error is NoServiceFoundException) () => const InfoNotFound(information: 'notícias');
+                  if (snapshot.error is InvalidFormatException) () => const InfoNotFound(information: 'notícias');
                   //default error
                   return const InfoNotFound(information: 'notícias');
                 }

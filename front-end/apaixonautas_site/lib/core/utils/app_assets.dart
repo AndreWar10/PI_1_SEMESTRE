@@ -18,4 +18,11 @@ class AppAssets {
 
   //gifs
   static String get backgroundGIF => 'assets/gifs/background.gif';
+  static String get background2GIF => 'assets/gifs/back_gif.gif';
+  static String get background3GIF => 'assets/gifs/gif_3.gif';
+
+  //astronaut
+  static String get astronautLoginPNG => 'assets/astronaut/login.png';
+  static String get astronautSignUpPNG => 'assets/astronaut/signup.png';
+
 }

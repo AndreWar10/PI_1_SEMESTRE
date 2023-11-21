@@ -1,4 +1,4 @@
-import prisma from '../database/client.js'
+import prisma from '../database/client.js';
 //import prisma from '../../database/client.js'
 
 const controller ={} //Objeto vazio
@@ -6,7 +6,7 @@ const controller ={} //Objeto vazio
 controller.create = async function(req, res) {
     try {
         //Conecta-se ao BD e envia uma instrução de criação de um novo documento, com os dados que estarão dentro da req.body
-        await prisma.notocias.create({data: req.body})
+        await prisma.noticias.create({data: req.body})
         //await prisma.noticias.create({data: req.doby})
         //Envia uma resposta de sucesso ao front-end
         //HTTP 201 Created
@@ -19,14 +19,15 @@ controller.create = async function(req, res) {
         //HTTP 500: Internal Server Error
         res.status(500).send(error)
     }
+  }
     controller.retrieveAll = async function(req, res) {
         try {
           // Manda buscar os dados no servidor
           // Traz ordenado por nome, depois por nivel
           const result = await prisma.noticias.findMany({
             orderBy: [
-              { nome: 'asc' },  // Ordem ascendente
-              { nivel: 'asc' }  // Ordem ascendente
+              { titulo: 'asc' },  // Ordem ascendente
+              //{ dataPublicacao: 'asc' },  // Ordem ascendente
             ]
           })
           // HTTP 200: OK
@@ -40,7 +41,7 @@ controller.create = async function(req, res) {
           res.status(500).send(error)
         }
       }
-      
+    
     controller.retrieveOne = async function(req, res) {
         try {
           const result = await prisma.noticias.findUnique({
@@ -102,6 +103,6 @@ controller.create = async function(req, res) {
         }
     }
       
-}
+
 
 export default controller
