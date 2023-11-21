@@ -6,8 +6,8 @@ const controller ={} //Objeto vazio
 controller.create = async function(req, res) {
     try {
         //Conecta-se ao BD e envia uma instrução de criação de um novo documento, com os dados que estarão dentro da req.body
-        await prisma.noticias.create({data: req.body})
-        //await prisma.noticias.create({data: req.doby})
+        await prisma.publicacaoUsuario.create({data: req.body})
+        //await prisma.publicacoes.create({data: req.doby})
         //Envia uma resposta de sucesso ao front-end
         //HTTP 201 Created
         res.status(201).end()
@@ -24,9 +24,9 @@ controller.create = async function(req, res) {
         try {
           // Manda buscar os dados no servidor
           // Traz ordenado por nome, depois por nivel
-          const result = await prisma.noticias.findMany({
+          const result = await prisma.publicacaoUsuario.findMany({
             orderBy: [
-              { titulo: 'asc' },  // Ordem ascendente
+              { dataPublicacao: 'asc' },  // Ordem ascendente
               //{ dataPublicacao: 'asc' },  // Ordem ascendente
             ]
           })
@@ -44,7 +44,7 @@ controller.create = async function(req, res) {
     
     controller.retrieveOne = async function(req, res) {
         try {
-          const result = await prisma.noticias.findUnique({
+          const result = await prisma.publicacaoUsuario.findUnique({
             where: { id: req.params.id }
           })
       
@@ -64,11 +64,10 @@ controller.create = async function(req, res) {
       
     controller.update = async function(req, res) {
         try {
-          const result = await prisma.noticias.update({
+          const result = await prisma.publicacaoUsuario.update({
             where: { id: req.params.id },
             data: req.body
           })
-      
           // Encontrou e atualizou ~> retorna HTTP 204: No content
           if(result) res.status(204).end()
           // Não encontrou (e não atualizou) ~> retorna HTTP 404: Not found
@@ -82,10 +81,29 @@ controller.create = async function(req, res) {
           res.status(500).send(error)
         }
     }
+
+  //   controller.update = async function(req, res) {
+  //       try {
+  //         const result = await prisma.professor.update({
+  //             where: {id: req.params.id},
+  //             data: req.body
+  //         })
+  //         //Encontrou e atualizou ~> retorna http 204: ok
+  //         if(result) res.status(204).end()
+  //         //Não encontrou (e não atualizou) ~> retonna HTTP 404: NOt Found
+  //         else res.status(404).end()
+  //     }
+  //     catch(error){
+  //         //deu errado: exibe o erro no console do back-end
+  //         console.error(error)
+  //         //Envia o erro ao front-end, com status 500 - http 500: Internal Server Error
+  //         res.status(500).send(error)
+  //         }
+  // }
       
     controller.delete = async function(req, res) {
         try {
-          const result = await prisma.noticias.delete({
+          const result = await prisma.publicacaoUsuario.delete({
             where: { id: req.params.id }
           })
       
@@ -103,6 +121,5 @@ controller.create = async function(req, res) {
         }
     }
       
-
 
 export default controller

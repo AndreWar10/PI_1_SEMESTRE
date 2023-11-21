@@ -6,8 +6,8 @@ const controller ={} //Objeto vazio
 controller.create = async function(req, res) {
     try {
         //Conecta-se ao BD e envia uma instrução de criação de um novo documento, com os dados que estarão dentro da req.body
-        await prisma.noticias.create({data: req.body})
-        //await prisma.noticias.create({data: req.doby})
+        await prisma.lancamentos.create({data: req.body})
+        //await prisma.lancamentos.create({data: req.doby})
         //Envia uma resposta de sucesso ao front-end
         //HTTP 201 Created
         res.status(201).end()
@@ -19,14 +19,14 @@ controller.create = async function(req, res) {
         //HTTP 500: Internal Server Error
         res.status(500).send(error)
     }
-  }
+}
     controller.retrieveAll = async function(req, res) {
         try {
           // Manda buscar os dados no servidor
           // Traz ordenado por nome, depois por nivel
-          const result = await prisma.noticias.findMany({
+          const result = await prisma.lancamentos.findMany({
             orderBy: [
-              { titulo: 'asc' },  // Ordem ascendente
+              { missao: 'asc' },  // Ordem ascendente
               //{ dataPublicacao: 'asc' },  // Ordem ascendente
             ]
           })
@@ -41,10 +41,10 @@ controller.create = async function(req, res) {
           res.status(500).send(error)
         }
       }
-    
+      
     controller.retrieveOne = async function(req, res) {
         try {
-          const result = await prisma.noticias.findUnique({
+          const result = await prisma.lancamentos.findUnique({
             where: { id: req.params.id }
           })
       
@@ -64,7 +64,7 @@ controller.create = async function(req, res) {
       
     controller.update = async function(req, res) {
         try {
-          const result = await prisma.noticias.update({
+          const result = await prisma.lancamentos.update({
             where: { id: req.params.id },
             data: req.body
           })
@@ -85,7 +85,7 @@ controller.create = async function(req, res) {
       
     controller.delete = async function(req, res) {
         try {
-          const result = await prisma.noticias.delete({
+          const result = await prisma.lancamentos.delete({
             where: { id: req.params.id }
           })
       
@@ -102,7 +102,6 @@ controller.create = async function(req, res) {
           res.status(500).send(error)
         }
     }
-      
-
+    
 
 export default controller

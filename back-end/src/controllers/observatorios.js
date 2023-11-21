@@ -6,8 +6,8 @@ const controller ={} //Objeto vazio
 controller.create = async function(req, res) {
     try {
         //Conecta-se ao BD e envia uma instrução de criação de um novo documento, com os dados que estarão dentro da req.body
-        await prisma.noticias.create({data: req.body})
-        //await prisma.noticias.create({data: req.doby})
+        await prisma.observatorios.create({data: req.body})
+        //await prisma.observatorios.create({data: req.doby})
         //Envia uma resposta de sucesso ao front-end
         //HTTP 201 Created
         res.status(201).end()
@@ -24,9 +24,9 @@ controller.create = async function(req, res) {
         try {
           // Manda buscar os dados no servidor
           // Traz ordenado por nome, depois por nivel
-          const result = await prisma.noticias.findMany({
+          const result = await prisma.observatorios.findMany({
             orderBy: [
-              { titulo: 'asc' },  // Ordem ascendente
+              { nome: 'asc' },  // Ordem ascendente
               //{ dataPublicacao: 'asc' },  // Ordem ascendente
             ]
           })
@@ -44,7 +44,7 @@ controller.create = async function(req, res) {
     
     controller.retrieveOne = async function(req, res) {
         try {
-          const result = await prisma.noticias.findUnique({
+          const result = await prisma.observatorios.findUnique({
             where: { id: req.params.id }
           })
       
@@ -64,7 +64,7 @@ controller.create = async function(req, res) {
       
     controller.update = async function(req, res) {
         try {
-          const result = await prisma.noticias.update({
+          const result = await prisma.observatorios.update({
             where: { id: req.params.id },
             data: req.body
           })
@@ -85,7 +85,7 @@ controller.create = async function(req, res) {
       
     controller.delete = async function(req, res) {
         try {
-          const result = await prisma.noticias.delete({
+          const result = await prisma.observatorios.delete({
             where: { id: req.params.id }
           })
       
