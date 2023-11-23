@@ -53,6 +53,12 @@ class NewsWebItem extends StatelessWidget {
                               child: Image.network(
                                 news.imageUrl,
                                 fit: BoxFit.fill,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Image.asset(
+                                    'assets/news/space.jpeg',
+                                    fit: BoxFit.fill,
+                                  );
+                                },
                               ),
                             )
                           : SizedBox(
@@ -67,8 +73,7 @@ class NewsWebItem extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             vertical: 20, horizontal: 16),
                         child: Text(
-                          DateFormat('LLLL dd, yyyy')
-                              .format(news.publishedAt),
+                          DateFormat('LLLL dd, yyyy').format(news.publishedAt),
                           style: TextStyle(
                             fontFamily: AppFonts.poppins500,
                             fontSize: 12,
