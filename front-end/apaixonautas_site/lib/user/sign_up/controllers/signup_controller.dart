@@ -1,6 +1,9 @@
 import 'package:apaixonautas_site/core/functions/functions.dart';
+import 'package:apaixonautas_site/user/login/models/user_model.dart';
+import 'package:apaixonautas_site/user/repository/user_repository.dart';
 import 'package:br_validators/validators/br_validators.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class SignUpController {
   SignUpController();
@@ -20,9 +23,30 @@ class SignUpController {
   }
 
   void clickInCreateAccount() {
+    DateFormat format = DateFormat("dd/MM/yyyy");
+
+    // Converte a string em datetime
+    DateTime datetime = format.parse(birthController.text);
+    datetime = datetime.add(const Duration(seconds: 10000));
+    String iso8601 = datetime.toIso8601String();
+    iso8601 += "Z";
+
+    // Imprime o datetime
     if (formKey.currentState!.validate()) {
-      print('valid');
-    }
+      final UserModel userModel = UserModel(
+        name: nameController.text,
+        cpf: cpfController.text,
+        password: passController.text,
+        birth: iso8601,
+        email: emailController.text,
+        telephone: telephoneController.text,
+        likedPub: [],
+      );
+
+      final response = UserRepository().createUser(user: userModel);
+
+      //print(response);
+   }
   }
 
   String? validateCpf(String? text) {
@@ -69,7 +93,8 @@ class SignUpController {
   String? validateEmail(String? text) {
     if (text == null || text.isEmpty) {
       return 'Informe o E-mail';
-    } else if (!text.contains('@') ||!RegExp(r"^[a-zA-Z0-9_\-.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(text)) {
+    } else if (!text.contains('@') ||
+        !RegExp(r"^[a-zA-Z0-9_\-.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(text)) {
       return "Utilize o formato nome@exemplo.com";
     }
     //TODO: Verificar se ja nao está cadastrado.

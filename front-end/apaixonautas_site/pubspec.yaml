@@ -49,6 +49,8 @@ dependencies:
   flutter_cube: ^0.1.1
   br_validators: ^2.0.3
   provider:
+  go_router: ^12.1.1
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

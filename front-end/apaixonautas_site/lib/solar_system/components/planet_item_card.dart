@@ -1,6 +1,7 @@
 import 'package:apaixonautas_site/core/utils/app_fonts.dart';
 import 'package:apaixonautas_site/solar_system/models/solar_system_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PlanetItemCard extends StatelessWidget {
   const PlanetItemCard({Key? key, required this.planet}) : super(key: key);
@@ -13,8 +14,7 @@ class PlanetItemCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
       child: GestureDetector(
-        onTap: () =>
-            Navigator.of(context).pushNamed('/detail', arguments: planet),
+        onTap: () => context.go('/sistemasolar/detalhes/${planeta.toLowerCase()}'),
         child: Stack(
           children: [
             Padding(

@@ -1,20 +1,90 @@
+import 'package:apaixonautas_site/core/models/data_model.dart';
 import 'package:apaixonautas_site/home/pages/home_page.dart';
 import 'package:apaixonautas_site/news/pages/news_container.dart';
-import 'package:apaixonautas_site/solar_system/controllers/solar_system_controller.dart';
-import 'package:apaixonautas_site/solar_system/models/solar_system_model.dart';
 import 'package:apaixonautas_site/solar_system/pages/detail_planet_page.dart';
 import 'package:apaixonautas_site/solar_system/pages/solar_system_container.dart';
 import 'package:apaixonautas_site/user/forget_network/pages/forget_network_container.dart';
 import 'package:apaixonautas_site/user/login/pages/login_container.dart';
 import 'package:apaixonautas_site/user/sign_up/pages/sign_up_container.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final GoRouter _router = GoRouter(
+    errorBuilder: ((context, state) => const PageNotFound404()),
+    routes: <RouteBase>[
+      GoRoute(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) {
+          return const HomePage();
+        },
+      ),
+      GoRoute(
+        path: '/sistemasolar',
+        builder: (BuildContext context, GoRouterState state) {
+          return const SolarSystemContainer();
+        },
+      ),
+      GoRoute(
+        path: '/sistemasolar/detalhes/:planetName',
+        builder: (BuildContext context, GoRouterState state) {
+          final String nameParam = state.pathParameters['planetName'] ?? '';
+          for (String name in Data.planetsNames) {
+            if (nameParam.toUpperCase().trim() == name) {
+              return PlanetDetailPage(
+                planetN: state.pathParameters['planetName'] as String,
+              );
+            }
+          }
+
+          return const PageNotFound404();
+        },
+      ),
+      GoRoute(
+        path: '/noticias',
+        builder: (BuildContext context, GoRouterState state) {
+          return const NewsContainer();
+        },
+      ),
+      GoRoute(
+        path: '/lancamentos',
+        builder: (BuildContext context, GoRouterState state) {
+          return const NewsContainer();
+        },
+      ),
+      GoRoute(
+        path: '/observatorios',
+        builder: (BuildContext context, GoRouterState state) {
+          return const NewsContainer();
+        },
+      ),
+      GoRoute(
+        path: '/recuperar-senha',
+        builder: (BuildContext context, GoRouterState state) {
+          return const ForgetNetworkContainer();
+        },
+      ),
+      GoRoute(
+        path: '/cadastro',
+        builder: (BuildContext context, GoRouterState state) {
+          return const SignUpContainer();
+        },
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (BuildContext context, GoRouterState state) {
+          return const LoginPageContainer();
+        },
+      ),
+    ],
+  );
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _router,
       title: 'Apaixonauta',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -22,66 +92,33 @@ class MyApp extends StatelessWidget {
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             textStyle: MaterialStateProperty.resolveWith<TextStyle>(
-              (Set<MaterialState> states) {
+                (Set<MaterialState> states) {
               if (states.contains(MaterialState.hovered)) {
                 return const TextStyle(decoration: TextDecoration.underline);
               }
               return const TextStyle(decoration: TextDecoration.none);
-              }
-            ),
+            }),
           ),
         ),
       ),
-      initialRoute: '/',
-      onGenerateRoute: (settings) {
-        
-        switch (settings.name) {
-          case '/home':
-            return MaterialPageRoute(
-              builder: (_) => const HomePage(),
-              settings: const RouteSettings(name: '/home'),
-            );
-          case '/systemsolar':
-            return MaterialPageRoute(
-              builder: (_) => const SolarSystemContainer(),
-              settings: const RouteSettings(name: '/systemsolar'),
-            );
-          case '/detail':
-            return MaterialPageRoute(
-              builder: (_) => PlanetDetailPage(
-              planet: settings.arguments as SolarSystemModel),
-              settings: RouteSettings(
-                name:'/systemsolar/${SolarSystemController().returnId(settings.arguments as SolarSystemModel)}',
-              ),
-            );
-          case '/news':
-            return MaterialPageRoute(
-              builder: (_) => const NewsContainer(),
-              settings: const RouteSettings(name: '/news'),
-            );
-          case '/login':
-            return MaterialPageRoute(
-              builder: (_) => const LoginPageContainer(),
-              settings: const RouteSettings(name: '/login'),
-            );
-          case '/recover-pass':
-            return MaterialPageRoute(
-              builder: (_) => const ForgetNetworkContainer(),
-              settings: const RouteSettings(name: '/recover-pass'),
-            );
-          case '/sign-up':
-            return MaterialPageRoute(
-              builder: (_) => const SignUpContainer(),
-              settings: const RouteSettings(name: '/sign-up'),
-            );
+    );
+  }
+}
 
-          default:
-            return MaterialPageRoute(
-              builder: (_) => const HomePage(),
-              settings: const RouteSettings(name: '/home'),
-            );
-        }
-      },
+class PageNotFound404 extends StatelessWidget {
+  const PageNotFound404({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'This my custom errorpage',
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }

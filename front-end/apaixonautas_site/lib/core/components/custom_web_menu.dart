@@ -2,6 +2,7 @@ import 'package:apaixonautas_site/core/utils/app_assets.dart';
 import 'package:apaixonautas_site/core/utils/app_fonts.dart';
 import 'package:apaixonautas_site/core/utils/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class HeaderWeb extends PreferredSize {
@@ -39,10 +40,34 @@ class HeaderWeb extends PreferredSize {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            menuItem('Sistema', 'Solar', AppRoutes.systemSolar, AppAssets.menuSolarSystem, context),
-                            menuItem('Notícias', 'Astronômicas', AppRoutes.news, AppAssets.menuNews, context),
-                            menuItem('Lançamentos', 'Espaciais', AppRoutes.systemSolar, AppAssets.menuLaunchs, context),
-                            menuItem('Observatórios', 'Astronômicos', AppRoutes.systemSolar, AppAssets.menuObservatories, context),
+                            menuItem(
+                              'Sistema',
+                              'Solar',
+                              AppRoutes.systemSolar,
+                              AppAssets.menuSolarSystem,
+                              context,
+                            ),
+                            menuItem(
+                              'Notícias',
+                              'Astronômicas',
+                              AppRoutes.news,
+                              AppAssets.menuNews,
+                              context,
+                            ),
+                            menuItem(
+                              'Lançamentos',
+                              'Espaciais',
+                              AppRoutes.launchs,
+                              AppAssets.menuLaunchs,
+                              context,
+                            ),
+                            menuItem(
+                              'Observatórios',
+                              'Astronômicos',
+                              AppRoutes.observatories,
+                              AppAssets.menuObservatories,
+                              context,
+                            ),
                           ],
                         ),
                       ),
@@ -63,7 +88,7 @@ class HeaderWeb extends PreferredSize {
                               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             ),
                             onPressed: () {
-                              Navigator.of(context).pushNamed('/login');
+                              context.go('/login');
                             },
                             child: Text(
                               'Entre ou ',
@@ -81,7 +106,7 @@ class HeaderWeb extends PreferredSize {
                               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             ),
                             onPressed: () {
-                              Navigator.of(context).pushNamed('/sign-up');
+                              context.go('/cadastro');  
                             },
                             child: Text(
                               'Cadastre-se',
@@ -105,7 +130,8 @@ class HeaderWeb extends PreferredSize {
     );
   }
 
-  Widget menuItem(String text1, String text2, String route, String icon, BuildContext context) {
+  Widget menuItem(String text1, String text2, String route, String icon,
+      BuildContext context) {
     return Row(
       children: [
         Column(
@@ -114,7 +140,7 @@ class HeaderWeb extends PreferredSize {
             MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
-                onTap: () => Navigator.of(context).pushNamed(route),
+                onTap: () => context.go(route),
                 child: SizedBox(
                   height: 40,
                   width: 40,
@@ -139,7 +165,7 @@ class HeaderWeb extends PreferredSize {
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed(route);
+                context.go(route);
               },
               child: Text(
                 text1,
@@ -153,7 +179,7 @@ class HeaderWeb extends PreferredSize {
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed(route);
+                context.go(route);
               },
               child: Text(
                 text2,
@@ -237,7 +263,7 @@ class HeaderMobile extends StatelessWidget {
                           fontFamily: AppFonts.poppins600,
                         ),
                       ),
-                      onTap: () => Navigator.of(context).pushNamed(AppRoutes.systemSolar)),
+                      onTap: () => context.go(AppRoutes.systemSolar)),
                   ListTile(
                       hoverColor: hoverColor,
                       leading: SizedBox(
@@ -254,7 +280,7 @@ class HeaderMobile extends StatelessWidget {
                           fontFamily: AppFonts.poppins600,
                         ),
                       ),
-                      onTap: () => Navigator.of(context).pushNamed(AppRoutes.news)),
+                      onTap: () => context.go(AppRoutes.news)),
                   ListTile(
                       hoverColor: hoverColor,
                       leading: SizedBox(
@@ -271,8 +297,7 @@ class HeaderMobile extends StatelessWidget {
                           fontFamily: AppFonts.poppins600,
                         ),
                       ),
-                      onTap: () =>
-                          Navigator.of(context).pushNamed(AppRoutes.news)),
+                      onTap: () => context.go(AppRoutes.news)),
                   ListTile(
                     hoverColor: hoverColor,
                     leading: SizedBox(

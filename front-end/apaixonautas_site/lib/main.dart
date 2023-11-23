@@ -4,5 +4,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 void main() {
   setUrlStrategy(PathUrlStrategy());
-  runApp(const MyApp());
+  runApp(
+    MyApp(),
+  );
 }

@@ -1,4 +1,6 @@
+import 'package:apaixonautas_site/user/login/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginController {
   final TextEditingController emailController;
@@ -19,11 +21,10 @@ class LoginController {
 
   void clickInLogin() {
     if (formKey.currentState!.validate()) {
-      print('dfsfs');
     }
   }
 
   void clickInForgetNetwork(BuildContext context) {
-    Navigator.of(context).pushNamed('/recover-pass');
+    context.go('/recuperar-senha');
   }
 }

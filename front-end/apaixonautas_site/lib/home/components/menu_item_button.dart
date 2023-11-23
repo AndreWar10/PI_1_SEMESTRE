@@ -1,5 +1,6 @@
 import 'package:apaixonautas_site/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MenuButton extends StatelessWidget {
   final String textButton;
@@ -18,7 +19,7 @@ class MenuButton extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed(pageTo),
+        onTap: () => context.go(pageTo),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,

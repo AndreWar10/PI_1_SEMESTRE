@@ -1,3 +1,4 @@
+import 'package:apaixonautas_site/core/models/data_model.dart';
 import 'package:apaixonautas_site/solar_system/models/solar_system_model.dart';
 import 'package:apaixonautas_site/solar_system/repository/solar_system_repository.dart';
 
@@ -11,9 +12,9 @@ class SolarSystemController {
 
     if (response != null) {
       for (final planet in response) {
-        planetsList
-            .add(SolarSystemModel.fromJson(planet as Map<String, dynamic>));
+        planetsList.add(SolarSystemModel.fromJson(planet as Map<String, dynamic>));
       }
+      Data.planetsList = planetsList;
       return planetsList;
     } else {
       return null;
