@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum UF {
+  AC
+  AP
+  AM
+  BA
+  CE
+  DF
+  ES
+  GO
+  MA
+  MT
+  MS
+  MG
+  PA
+  PB
+  PR
+  PE
+  PI
+  RJ
+  RN
+  RS
+  RO
+  RR
+  SC
+  SP
+  SE
+  TO
+}
+
+model Noticias {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  titulo         String
+  fotoUrl        String?
+  lead           String
+  idAPI          Int
+  dataPublicacao DateTime
+  // curtidasTotal   Int
+  // comentarios     String
+  // faforitadaId    String
+  // APIURL          String
+  // dataPublicacao  DateTime
+}
+
+model Observatorios {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  nome      String
+  fotoUrl   String
+  bairro    String
+  municipio String
+  UF        UF      @default(SP)
+  telefone  String?
+  siteURL   String?
+}
+
+model Lancamentos {
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  missao        String
+  logoMissaoURL String?
+  lead          String
+  sucesso       Boolean
+  idAPI         Int
+  APIURL        String
+}
+
+model PublicacaoUsuario {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  idAPI         Int
+  curtidasTotal Int
+  usuarioId     String[] @db.ObjectId
+  //comentarioId  String?[] @db.ObjectId
+  //comentario   Comentario[] @relation(fields:[comentarioId] , references: [id])
+}
+
+// model Comentario {
+//   id              String      @id @default(auto()) @map("_id") @db.ObjectId
+//   texto           String
+//   userId          String[]    @db.ObjectId
+//   dataComentario  DateTime
+//   publicacaoId    String?[] @db.ObjectId
+//   publicacoes     PublicacaoUsuario[] @relation(fields:[publicacaoId] , references: [id])
+// }
+
+model Usuario {
+  id                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome                String
+  cpf                 String   @unique
+  senha               String
+  dataNascimento      DateTime
+  email               String   @unique
+  telefone            String?
+  publicacoesCurtidas Int[]
+}
+
+
+// {
+//   "nome": "Dirceu Garcia",
+//   "CPF": "29056558870",
+//   "senha": "Andre123"
+//   "dataNascimento": "1989-07-18T03:00:00.000+00:00" ,
+//   "logradouro": "Rua Goiás", 
+//   "numImovel": "861",
+//   "complemento": "frente",
+//   "bairro": "Vila Aparecida",
+//   "municipio": "Franca",
+//   "UF" : "SP",
+//   "email" : "dirceu.garcia@fatec.sp.gov.br",
+//   "telefone": "16992347374",
+//   "pontuacao": 0.0
+// }
