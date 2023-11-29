@@ -23,9 +23,9 @@ Repositório para um projeto de PI, da FATEC no curso de Desenvolvimento de Soft
   
 
 ## Uso das matérias: 
-* Web III → desenvolvimento do site. -
+* Web III → desenvolvimento do site. 
 * Gestão ágil → gerenciamento do projeto.
-* IHC → responsividade e experiência do usuário (se possível com acessibilidade para deficientes).
+* IHC → responsividade e experiência do usuário.
 * Banco não relacional → cadastro de usuário, perfil no site (claro e dark), notícias marcadas para ler depois, se possível relação entre amigos.
   
 ## Definições do projeto: 
@@ -37,11 +37,10 @@ Site web que liga API's diferentes com informações confiáveis e dispostas de 
 ## Projeto se propõe a arquivar dados e preferências dos usuários: 
 
 1. Preferências: 
-- Tema (Dark ou claro).
 - Matérias favoritas e anotadas para ler depois.
 - Assuntos favoritos (temas).
-2. Dados dos usuários:
 
+2. Dados dos usuários:
 - Nome
 - Endereço
 - E-mail
@@ -52,7 +51,6 @@ Site web que liga API's diferentes com informações confiáveis e dispostas de 
 - Sistema solar e exoplanetas
 - Noticias astronômicas gerais
 - Missões espaciais
-- Imersão com Observatórios
 - Calendário astronômico
 - Monitor de lives
 
@@ -87,6 +85,7 @@ Espaço para detalhar os maiores desafio enfrentados e cada tecnologia e as mane
 
 ### Documentação
 - Adaptação do Jira aos modelos que os alunos já dominavam.
+- Busca de artigos relacionados ao tema, para embasamento do referencial teórico.
 
 ### Servidor e Deploy
 - Configuração do Mongo no primeiro servidor (não aceitava Mongo).
