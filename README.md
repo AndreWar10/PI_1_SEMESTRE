@@ -17,7 +17,7 @@ Repositório para um projeto de PI, da FATEC no curso de Desenvolvimento de Soft
 
 * André Guerra - Front End - Flutter
 * Dirceu Garcia - BD NoSQL - Mongo DB com Prisma e conexão do Node.
-* Juliana - Documentação - 
+* Juliana - Documentação 
 * Vinícius Ávila - Back e conexão com API
 * Vinícius Pereira - Back e coneção com API - Hospedagem e 
   
